@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->integer('originalprice');
             $table->integer('saleprice')->nullable();
             $table->string('mainimage');

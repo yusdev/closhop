@@ -70,7 +70,7 @@ class ProductController extends Controller
             $product->sizes()->attach($sizeID,['color_id'=> $colorID, 'stock'=>true]);
           }
         }
-        return redirect('/v/micuenta');
+        return redirect('/v/products');
     }
 
     /**
@@ -96,7 +96,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('editproduct', ['product'=>$product]);
     }
 
     /**

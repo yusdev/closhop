@@ -18,8 +18,8 @@
                   <li><img src="{{ asset('storage/' . $product->mainimage) }}" width="100px"></li>
                   <li style="margin:30px"><a href="{{route('products.show', ['id'=>$product->id])}}">{{ $product->name }}</a> <p> {{ '$ '.$product->originalprice }} </p></li>
                   <li style="margin:30px"><p> Publicada </p></li>
-                  <li><a type="submit" class="btn btn-xs btn-primary">Eliminar</a></li>
-                  <li><a type="submit" class="btn btn-xs btn-primary">Editar</a></li>
+                  <!-- <li><a type="submit" class="btn btn-xs btn-primary">Eliminar</a></li> -->
+                  <li><a href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-xs btn-primary">Editar</a></li>
                   <li><a type="submit" class="btn btn-xs btn-primary">Pausar</a></li>
             </div>
           <?php endforeach; ?>
