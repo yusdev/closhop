@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $user = \Auth::user();
         $products = $user->products()->orderBy('id', 'desc')->get();
-        return view('myproducts', ['products' => $products]);
+        return view('myproducts', ['user'=>$user,'products' => $products]);
     }
 
     /**

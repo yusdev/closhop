@@ -77,9 +77,7 @@ var stocks = <?php echo json_encode($stock) ?>;
       button.value = "COMPRAR";
     }
   }
-  // document.getElementById('size-selects').addEventListener("change", function(){
-  //   this.alert("sadadad");
-  // }, false);
+
 </script>
 
 

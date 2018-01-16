@@ -40,10 +40,11 @@ class AccountController extends Controller
         'location' => $request->input('location'),
         'postalcode' => $request->input('postalcode'),
         'cellphone' => $request->input('cellphone'),
-        'dni_cuit' => $request->input('dni_cuit')
+        'dni_cuit' => $request->input('dni_cuit'),
+        'complete' => 1
       ];
       $vendor->update($upload);
       $request->flash();
-      return redirect('/micuenta')->withInput();
+      return redirect('/v/micuenta')->withInput();
     }
 }

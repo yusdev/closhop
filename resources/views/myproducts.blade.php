@@ -5,7 +5,7 @@
     <div class="row">
 
       <div class="col-md-12">
-        <a href= "{{ route('products.create') }}" onclick="check()">
+        <a id="create-product" href= "{{ route('products.create') }}">
           <div class="clo-container" style="background-color:#000;margin-bottom:30px;text-align:center">
             <img src="https://www.dmanetwork.com/share/dma/gfx/icon-add-grey.png" width="30px" style="padding:10px 0">
             <p style="font-size:30px;display:inline-block"></p>
@@ -28,6 +28,22 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+  var perfilcomplete = <?php echo $user->complete ?>;
+    window.onload = function(){
+      var button = document.getElementById('create-product');
+      button.addEventListener('click', function(event){
+        event.preventDefault();
+        if(perfilcomplete){
+          window.location = this.href;
+        }else{
+          window.alert('Recordá completar tu perfil con todos tus datos y vincular tu cuenta de MercadoPago, de otra forma no podrás publicar tus productos.');
+        }
+      });
+    }
+
+  </script>
 
 
 

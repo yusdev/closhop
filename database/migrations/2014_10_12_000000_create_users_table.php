@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('dni_cuit')->nullable();
             $table->string('user_type');
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('complete')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
