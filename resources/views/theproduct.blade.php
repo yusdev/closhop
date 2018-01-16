@@ -24,13 +24,13 @@
       <div class="clo-container" style="padding:20px">
         <p>{{$product->description}}</p>
 
-        <select class="col-md-6" name="">
+        <select class="col-md-6" id="size-selects" name="selects" onchange="checkstock()">
           <?php foreach ($sizes as $size): ?>
             <option value="{{$size->id}}">{{$size->size}}</option>
           <?php endforeach; ?>
         </select>
 
-        <select class="col-md-6" name="">
+        <select class="col-md-6" id="color-selects" name="colors" onchange="checkstock()">
           <?php foreach ($colors as $color): ?>
             <option value="{{$color->id}}">{{$color->color}}</option>
           <?php endforeach; ?>
@@ -38,7 +38,7 @@
 
       </div>
 
-      <a class="col-md-12 btn btn-warning" style="margin-top:20px" href="#">COMPRAR</a>
+      <input id="buy-button" class="col-md-12 btn btn-warning" type="button" value="COMPRAR" style="margin-top:20px"></input>
       <small style="display:block" class="form-text text-muted">*Al presionar comprar aceptas los términos y condiciones de Closhop</small>
 
 
@@ -56,6 +56,31 @@
 
     </div>
 
+
+<script type="text/javascript">
+var stocks = <?php echo json_encode($stock) ?>;
+
+  function checkstock(){
+    var button = document.getElementById('buy-button');
+    var size = document.getElementById('size-selects').value;
+    var color = document.getElementById('color-selects').value;
+    var stock = stocks.find(function(v){
+      return (v.size_id == size && v.color_id == color)
+    });
+    if(stock.stock == 0) {
+      button.className = "col-md-12 btn btn-secondary";
+      button.disabled = true;
+      button.value = "SIN STOCK";
+    } else {
+      button.className = "col-md-12 btn btn-warning";
+      button.disabled = false;
+      button.value = "COMPRAR";
+    }
+  }
+  // document.getElementById('size-selects').addEventListener("change", function(){
+  //   this.alert("sadadad");
+  // }, false);
+</script>
 
 
 

@@ -84,7 +84,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         $sizes = $product->sizes()->groupBy('size_id')->get();
         $colors = $product->colors()->groupBy('color_id')->get();
-        return view('theproduct',['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors]);
+        $stock = DB::table('color_product_size')->where('product_id', $product->id)->get();
+        return view('theproduct',['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors, 'stock'=>$stock]);
     }
 
     /**
