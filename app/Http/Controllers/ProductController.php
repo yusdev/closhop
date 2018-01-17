@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Size;
 use App\Color;
 use App\Product;
-use App\Variant;
+use App\Stock;
 
 class ProductController extends Controller
 {
@@ -132,9 +132,13 @@ class ProductController extends Controller
 
       foreach ($allstocks as $stock) {
           if(in_array($stock->id ,$variants)){
-            //Cambiar stock a TRUE
+            $s = Stock::find($stock->id);
+            $s->stock = true;
+            $s->save();
           } else {
-            //Cambiar stock a FALSE
+            $s = Stock::find($stock->id);
+            $s->stock = false;
+            $s->save();
           }
         }
 

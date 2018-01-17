@@ -44,13 +44,10 @@
 
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Diseñador/a</a>
+          <a class="nav-link active" href="#">Métodos de envío</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Política de cambios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Métodos de envío</a>
+          <a class="nav-link" href="#">Políticas de cambio</a>
         </li>
       </ul>
 
