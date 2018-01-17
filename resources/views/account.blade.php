@@ -76,16 +76,15 @@
                           <div class="form-group col-md-4">
                             <label for="provincia">Provincia*</label>
                             <select id="provincia" class="form-control" name="province">
-                              <option selected>Seleccionar</option>
-                              <option value="0">...</option>
+                              <option selected disabled>Seleccionar</option>
+                              <?php foreach ($provincias['provincias'] as $provincia): ?>
+                                <option value="{{$provincia['nombre']}}">{{$provincia['nombre']}}</option>
+                              <?php endforeach; ?>
                             </select>
                           </div>
                           <div class="form-group col-md-4">
-                            <label for="localidad">Localidad*</label>
-                            <select id="localidad" class="form-control" name="location">
-                              <option selected>Seleccionar</option>
-                              <option value="0">...</option>
-                            </select>
+                            <label for="ciudad">Ciudad*</label>
+                            <input type="text" class="form-control" id="ciudad" name="city" value="{{ old('city', $user->city) }}">
                           </div>
                           <div class="form-group col-md-4">
                             <label for="codigopostal">CP</label>

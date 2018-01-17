@@ -18,7 +18,7 @@
     <div class="col-md-6">
       <h2>{{ $product->name }}</h2>
       <h6>by {{$product->user->shop_name}}</h6>
-      <p><span class="glyphicon glyphicon-map-marker"></span> {{$product->user->province}}, {{$product->user->location}}</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> {{$product->user->province}}, {{$product->user->city}}</p>
       <p>{{'$ '.$product->originalprice}}</p>
 
       <div class="clo-container" style="padding:20px">

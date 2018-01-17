@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class AccountController extends Controller
 {
@@ -26,7 +27,14 @@ class AccountController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('account')->with('user', $user);
+        $provincias = Storage::disk('local')->get('provincias.json');
+        $provincias = json_decode($provincias, true);
+
+        // foreach ($provincias['provincias'] as $provincia){
+        //     dd($provincia);
+        // }
+
+        return view('account',['user'=>$user, 'provincias'=>$provincias]);
     }
 
     public function update(Request $request, $id)
@@ -36,7 +44,7 @@ class AccountController extends Controller
           'lastname'  => 'required',
           'address'  => 'required',
           'province'  => 'required',
-          'location'  => 'required',
+          'city'  => 'required',
           'postalcode'  => 'required',
           'cellphone'  => 'required|numeric',
           'dni_cuit'  => 'required|numeric'
@@ -47,7 +55,7 @@ class AccountController extends Controller
         'lastname' => $request->input('lastname'),
         'address' => $request->input('address'),
         'province' => $request->input('province'),
-        'location' => $request->input('location'),
+        'city' => $request->input('city'),
         'postalcode' => $request->input('postalcode'),
         'cellphone' => $request->input('cellphone'),
         'dni_cuit' => $request->input('dni_cuit'),

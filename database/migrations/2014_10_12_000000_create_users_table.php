@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('cellphone')->nullable();
             $table->string('address')->nullable();
             $table->string('province')->nullable();
-            $table->string('location')->nullable();
+            $table->string('city')->nullable();
             $table->integer('postalcode')->nullable();
             $table->integer('dni_cuit')->nullable();
             $table->string('user_type');
