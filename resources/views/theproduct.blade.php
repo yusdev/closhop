@@ -17,24 +17,17 @@
       <div class="mySlides">
         <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
       </div>
-      <div class="mySlides">
-        <img src="{{ asset('storage/' . $product->aditionalimage1) }}" style="width:100%">
-      </div>
+        <div class="mySlides">
+          <img src="{{ asset('storage/' . $product->aditionalimage1) }}" style="width:100%">
+        </div>
       <div class="mySlides">
         <img src="{{ asset('storage/' . $product->aditionalimage2) }}" style="width:100%">
       </div>
+
       <a style ="text-decoration:none" class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a style ="text-decoration:none" class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <!-- imagenes fin -->
-
-    <!-- <div class="col-md-1" style="padding:0">
-      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
-      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
-      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
-    </div>
-
-    <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-4"> -->
 
 
     <div class="col-md-6">
@@ -44,21 +37,26 @@
       <p>{{'$ '.$product->originalprice}}</p>
 
       <div class="clo-container" style="padding:20px">
-        <p>{{$product->description}}</p>
+        <div class="">
+          <p>{{$product->description}}</p>
+        </div>
+        <div style="width:48%;display:inline-block;">
+          <select style="width:100%" id="size-selects" name="selects" onchange="checkstock()">
+              <option value="#" selected disabled>Talle</option>
+            <?php foreach ($sizes as $size): ?>
+              <option value="{{$size->id}}">{{$size->size}}</option>
+            <?php endforeach; ?>
+          </select>
+        </div>
 
-        <select class="col-md-6" id="size-selects" name="selects" onchange="checkstock()">
-            <option value="#" selected disabled>Talle</option>
-          <?php foreach ($sizes as $size): ?>
-            <option value="{{$size->id}}">{{$size->size}}</option>
-          <?php endforeach; ?>
-        </select>
-
-        <select class="col-md-6" id="color-selects" name="colors" onchange="checkstock()">
-            <option value="#" selected disabled>Color</option>
-          <?php foreach ($colors as $color): ?>
-            <option value="{{$color->id}}">{{$color->color}}</option>
-          <?php endforeach; ?>
-        </select>
+        <div style="width:48%;display:inline-block;">
+          <select style="width:100%" id="color-selects" name="colors" onchange="checkstock()">
+              <option value="#" selected disabled>Color</option>
+            <?php foreach ($colors as $color): ?>
+              <option value="{{$color->id}}">{{$color->color}}</option>
+            <?php endforeach; ?>
+          </select>
+        </div>
 
       </div>
 
