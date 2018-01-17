@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container">
-  <form method="POST" enctype="multipart/form-data" action="{{route('products.store')}}">
+  <form method="POST" enctype="multipart/form-data" action="{{route('products.update', $product->id)}}">
   {{ csrf_field() }}
+  {{ method_field('PATCH') }}
 
       <div class="col-md-10 col-md-offset-1 clo-container">
 
@@ -28,29 +29,27 @@
           </div>
 
           <div class="form-group col-md-12">
-            <?php foreach ($product->sizes as $size): ?>
-              <div >
-                {{$size->size}} / {{$size->pivot->color_id}}
-                <input type="checkbox" name="" value="">
+            <div class="">
+              <div class="col-md-1">
+                <label>Talle</label>
+                <?php foreach ($sizes as $size): ?>
+                  <p>{{$size->size}}</p>
+                <?php endforeach; ?>
               </div>
-            <?php endforeach; ?>
+              <div class="col-md-1">
+                <label>Color</label>
+                <?php foreach ($colors as $color): ?>
+                  <p>{{$color->color}}</p>
+                <?php endforeach; ?>
+              </div>
+              <div class="col-md-1">
+                <label>Stock</label>
+                <?php foreach ($stocks as $stock): ?>
+                  <p style="text-align:center"><input type="checkbox" name="variants[]" value="{{$stock->id}}" <?php if($stock->stock == 1){ echo "checked"; }?>></p>
+                <?php endforeach; ?>
+              </div>
+            </div>
           </div>
-
-          <div class="col-md-4">
-            <label for="">Imagen principal</label>
-            <input name="mainimage" type="file" maxFiles=1/>
-          </div>
-
-          <div class="col-md-4">
-            <label for="">Imagen adicional</label>
-            <input name="aditionalimage1" type="file" maxFiles=1/>
-          </div>
-
-          <div class="col-md-4">
-            <label for="">Imagen adicional</label>
-            <input name="aditionalimage2" type="file" maxFiles=1/>
-          </div>
-
         </div>
 
       <button type="submit" name="button" class="col-md-10 col-md-offset-1 btn btn-warning" style="margin-top:20px">GUARDAR CAMBIOS</button>

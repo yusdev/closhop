@@ -97,7 +97,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('editproduct', ['product'=>$product]);
+        $sizes = $product->sizes;
+        $colors = $product->colors;
+        $stocks = DB::table('color_product_size')->where('product_id', $product->id)->get();
+        return view('editproduct', ['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors, 'stocks'=>$stocks]);
     }
 
     /**
@@ -109,7 +112,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+          'name' => 'required',
+          'description'  => 'required',
+          'originalprice'  => 'required',
+          'saleprice'  => 'required'
+      ]);
+      $product = Product::findOrFail($id);
+      $updateProduct = [
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'originalprice' => $request->input('originalprice'),
+        'saleprice' => $request->input('saleprice')
+      ];
+      $product->update($updateProduct);
+
+      $variants = $request->input('variants');
+      $allstocks = DB::table('color_product_size')->where('product_id', $id)->get();
+
+      foreach ($allstocks as $stock) {
+          if(in_array($stock->id ,$variants)){
+            //Cambiar stock a TRUE
+          } else {
+            //Cambiar stock a FALSE
+          }
+        }
+
+      $request->flash();
+      return redirect('/v/products')->withInput();
     }
 
     /**

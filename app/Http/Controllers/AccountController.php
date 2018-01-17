@@ -31,6 +31,16 @@ class AccountController extends Controller
 
     public function update(Request $request, $id)
     {
+      $this->validate($request, [
+          'name' => 'required',
+          'lastname'  => 'required',
+          'address'  => 'required',
+          'province'  => 'required',
+          'location'  => 'required',
+          'postalcode'  => 'required',
+          'cellphone'  => 'required|numeric',
+          'dni_cuit'  => 'required|numeric'
+      ]);
       $vendor = User::findOrFail($id);
       $upload = [
         'name' => $request->input('name'),

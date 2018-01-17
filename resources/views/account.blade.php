@@ -33,7 +33,13 @@
                   <div class="tab-content" id="myTabContent">
 
                     <!-- MIS DATOS -->
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger col-md-12">
+                          <p>Por favor completa tu perfil con todos tus datos. Todos los campos son obligatorios.</p>
+                        </div>
+                    @endif
                     <div class="tab-pane fade active in" id="misdatos" role="tabpanel" aria-labelledby="misdatos-tab">
+
                       <form method="POST" action="{{ route('updateaccount', ['id'=>Auth::user()->id]) }}">
                         {{ csrf_field() }}
                         <div class="form-row">
