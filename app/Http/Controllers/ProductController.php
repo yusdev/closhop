@@ -112,12 +112,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-          'name' => 'required',
-          'description'  => 'required',
-          'originalprice'  => 'required',
-          'saleprice'  => 'required'
-      ]);
       $product = Product::findOrFail($id);
       $updateProduct = [
         'name' => $request->input('name'),
@@ -131,15 +125,13 @@ class ProductController extends Controller
       $allstocks = DB::table('color_product_size')->where('product_id', $id)->get();
 
       foreach ($allstocks as $stock) {
+          $s = Stock::find($stock->id);
           if(in_array($stock->id ,$variants)){
-            $s = Stock::find($stock->id);
             $s->stock = true;
-            $s->save();
           } else {
-            $s = Stock::find($stock->id);
             $s->stock = false;
-            $s->save();
           }
+          $s->save();
         }
 
       $request->flash();

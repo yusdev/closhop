@@ -25,12 +25,14 @@
         <p>{{$product->description}}</p>
 
         <select class="col-md-6" id="size-selects" name="selects" onchange="checkstock()">
+            <option value="#" selected disabled>Talle</option>
           <?php foreach ($sizes as $size): ?>
             <option value="{{$size->id}}">{{$size->size}}</option>
           <?php endforeach; ?>
         </select>
 
         <select class="col-md-6" id="color-selects" name="colors" onchange="checkstock()">
+            <option value="#" selected disabled>Color</option>
           <?php foreach ($colors as $color): ?>
             <option value="{{$color->id}}">{{$color->color}}</option>
           <?php endforeach; ?>
