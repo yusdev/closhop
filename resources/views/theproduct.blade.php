@@ -5,14 +5,36 @@
 <div class="container">
   <div class="row">
 
+    <!-- imagenes inicio -->
+
     <div class="col-md-1" style="padding:0">
       <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
       <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
       <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
     </div>
 
+    <div class="slideshow-container col-md-4">
+      <div class="mySlides">
+        <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
+      </div>
+      <div class="mySlides">
+        <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
+      </div>
+      <div class="mySlides">
+        <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <!-- imagenes fin -->
 
-    <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-4">
+    <!-- <div class="col-md-1" style="padding:0">
+      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
+      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
+      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
+    </div>
+
+    <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-4"> -->
 
 
     <div class="col-md-6">
@@ -54,9 +76,13 @@
       </ul>
 
     </div>
+  </div>
+</div>
 
 
 <script type="text/javascript">
+
+// checkstock
 var stocks = <?php echo json_encode($stock) ?>;
 
   function checkstock(){
@@ -77,7 +103,28 @@ var stocks = <?php echo json_encode($stock) ?>;
     }
   }
 
+  // imagenes
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
 </script>
+
 
 
 
