@@ -70,6 +70,6 @@ textarea {
   color: white;
 }
 
-.active, .dot:hover {
+.dot-active, .dot:hover {
   filter: opacity(.5);
 }
