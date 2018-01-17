@@ -8,9 +8,9 @@
     <!-- imagenes inicio -->
 
     <div class="col-md-1" style="padding:0">
-      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
-      <img src="{{ asset('storage/' . $product->aditionalimage1) }}" class="col-md-12" style="padding:0">
-      <img src="{{ asset('storage/' . $product->aditionalimage2) }}" class="col-md-12" style="padding:0">
+      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12 dot" onclick="currentSlide(1)" style="padding:0">
+      <img src="{{ asset('storage/' . $product->aditionalimage1) }}" class="col-md-12 dot" onclick="currentSlide(2)" style="padding:0">
+      <img src="{{ asset('storage/' . $product->aditionalimage2) }}" class="col-md-12 dot" onclick="currentSlide(3)" style="padding:0">
     </div>
 
     <div class="slideshow-container col-md-4">
@@ -23,8 +23,8 @@
       <div class="mySlides">
         <img src="{{ asset('storage/' . $product->aditionalimage2) }}" style="width:100%">
       </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <a style ="text-decoration:none" class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a style ="text-decoration:none" class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <!-- imagenes fin -->
 
@@ -115,10 +115,14 @@ var stocks = <?php echo json_encode($stock) ?>;
   function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";

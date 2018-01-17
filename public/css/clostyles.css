@@ -69,3 +69,7 @@ textarea {
   background-color: rgba(240, 173, 78, 0.6);
   color: white;
 }
+
+.active, .dot:hover {
+  filter: opacity(.5);
+}
