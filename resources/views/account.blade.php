@@ -76,10 +76,10 @@
                           <div class="form-group col-md-4">
                             <label for="provincia">Provincia*</label>
                             <select id="provincia" class="form-control" name="province">
-                              <option selected disabled>Seleccionar</option>
-                              <?php foreach ($provincias['provincias'] as $provincia): ?>
-                                <option value="{{$provincia['nombre']}}">{{$provincia['nombre']}}</option>
-                              <?php endforeach; ?>
+                                <option disabled <?php if(!$user->province){ echo "selected"; }?>>Seleccionar</option>
+                                @foreach ($provincias['provincias'] as $provincia)
+                                  <option value="{{$provincia['nombre']}}" <?php if($user->province == $provincia['nombre']){ echo "selected"; }?>>{{$provincia['nombre']}}</option>
+                                @endforeach
                             </select>
                           </div>
                           <div class="form-group col-md-4">
