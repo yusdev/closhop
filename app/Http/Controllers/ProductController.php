@@ -56,6 +56,23 @@ class ProductController extends Controller
         $productId = $productCreated->id;
         $product = Product::find($productId);
 
+        /*imagenes adicionales*/
+        $images = $request->file('aditionalimage');
+        if(count($images)>0){
+          for($i = 0; $i < count($images); $i++) {
+            $ext = $images[$i]->getClientOriginalExtension();
+            $name = \Auth::user()->id . uniqid();
+            $path = $images[$i]->storeAs('products', $name.'.'.$ext, 'public');
+            if($i){
+              $product->aditionalimage1= $path;
+            }else{
+              $product->aditionalimage2= $path;
+            }
+            $product->save();
+          }
+        }
+        /*fin imagenes adicionales*/
+
         $sizes = $request->input('sizes');
         $colors = $request->input('colors');
 

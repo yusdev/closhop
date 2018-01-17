@@ -44,12 +44,12 @@
 
           <div class="col-md-4">
             <label for="">Imagen adicional</label>
-            <input name="aditionalimage1" type="file" maxFiles=1/>
+            <input name="aditionalimage[]" type="file" />
           </div>
 
           <div class="col-md-4">
             <label for="">Imagen adicional</label>
-            <input name="aditionalimage2" type="file" maxFiles=1/>
+            <input name="aditionalimage[]" type="file" />
           </div>
 
         </div>

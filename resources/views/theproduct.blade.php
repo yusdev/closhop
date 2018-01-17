@@ -9,8 +9,8 @@
 
     <div class="col-md-1" style="padding:0">
       <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
-      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
-      <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12" style="padding:0">
+      <img src="{{ asset('storage/' . $product->aditionalimage1) }}" class="col-md-12" style="padding:0">
+      <img src="{{ asset('storage/' . $product->aditionalimage2) }}" class="col-md-12" style="padding:0">
     </div>
 
     <div class="slideshow-container col-md-4">
@@ -18,10 +18,10 @@
         <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
       </div>
       <div class="mySlides">
-        <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
+        <img src="{{ asset('storage/' . $product->aditionalimage1) }}" style="width:100%">
       </div>
       <div class="mySlides">
-        <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
+        <img src="{{ asset('storage/' . $product->aditionalimage2) }}" style="width:100%">
       </div>
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
