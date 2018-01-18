@@ -13,7 +13,7 @@
     </div>
 
     <div class="modal-footer">
-      <a href="{{route('products.index')}}" class="btn btn-secondary">CANCELAR</a>
+      <a class="ok-btn btn btn-secondary">CANCELAR</a>
       <a href="{{route('myaccount')}}" class="btn btn-warning">IR A MI CUENTA</a>
     </div>
 

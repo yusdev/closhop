@@ -16,7 +16,7 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary">OK</button>
+      <button type="button" class="ok-btn btn btn-secondary">OK</button>
     </div>
 
   </div>

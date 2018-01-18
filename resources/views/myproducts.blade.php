@@ -38,6 +38,7 @@
       var button = document.getElementById('create-product');
       var modal = document.getElementById('myModal');
       var span = document.getElementsByClassName("close")[0];
+      var ok = document.querySelector(".ok-btn");
       button.addEventListener('click', function(event){
         event.preventDefault();
         if(perfilcomplete){
@@ -48,6 +49,9 @@
       });
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
+          modal.style.display = "none";
+      }
+      ok.onclick = function() {
           modal.style.display = "none";
       }
       // When the user clicks anywhere outside of the modal, close it
