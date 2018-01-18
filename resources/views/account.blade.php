@@ -4,10 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <div class="alert alert-info">
-            Hola <strong>{{ Auth::user()->shop_name }}</strong>, Bienvenida a Closhop :) !!!<br/>
-            Recordá completar tu perfil con todos tus datos. No olvides vincular tu cuenta de MercadoPago, de otra forma no podrás publicar tus productos.
-          </div>
+          @if(!$user->complete)
+            <div class="alert alert-info">
+              Hola <strong>{{ Auth::user()->shop_name }}</strong>, Bienvenida a Closhop :) !!!<br/>
+              Recordá completar tu perfil con todos tus datos. No olvides vincular tu cuenta de MercadoPago, de otra forma no podrás publicar tus productos.
+            </div>
+          @endif
+
 
             <div class="clo-container panel-default">
                 <div class="panel-heading">
