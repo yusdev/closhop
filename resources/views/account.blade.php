@@ -8,6 +8,7 @@
             Hola <strong>{{ Auth::user()->shop_name }}</strong>, Bienvenida a Closhop :) !!!<br/>
             Recordá completar tu perfil con todos tus datos. No olvides vincular tu cuenta de MercadoPago, de otra forma no podrás publicar tus productos.
           </div>
+
             <div class="clo-container panel-default">
                 <div class="panel-heading">
                   <ul class="nav justify-content-center" id="myTab" role="tablist">
@@ -33,11 +34,13 @@
                   <div class="tab-content" id="myTabContent">
 
                     <!-- MIS DATOS -->
+
                     @if (count($errors) > 0)
                         <div class="alert alert-danger col-md-12">
                           <p>Por favor completa tu perfil con todos tus datos. Todos los campos son obligatorios.</p>
                         </div>
                     @endif
+
                     <div class="tab-pane fade active in" id="misdatos" role="tabpanel" aria-labelledby="misdatos-tab">
 
                       <form method="POST" action="{{ route('updateaccount', ['id'=>Auth::user()->id]) }}">
@@ -99,7 +102,7 @@
 
                     <!-- MERCADOPAGO -->
                     <div class="tab-pane fade" id="mercadopago" role="tabpanel" aria-labelledby="mp-tab">
-                      <button type="button" class="btn btn-primary" style="display:block">Vincular cuenta de MercadoPago</button>
+                      <a href="" type="button" class="btn btn-primary" style="display:block">Vincular cuenta de MercadoPago</a>
                       <small class="form-text text-muted">¿Por qué debo vincular mi cuenta de MercadoPago?</small>
                     </div>
 
@@ -150,5 +153,43 @@
         </div>
     </div>
 </div>
+
+@include('modals.success')
+
+
+<?php if(session()->has('saved')){
+  $saved = true;
+}else{
+  $saved = false;
+}
+?>
+
+<script type="text/javascript">
+  window.onload = function(){
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    var saved = <?php echo $saved; ?>;
+
+    if(saved){
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  }
+
+</script>
+
 
 @endsection

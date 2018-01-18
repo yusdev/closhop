@@ -29,22 +29,37 @@
     </div>
   </div>
 
+  @include('modals.complete')
+
   <script type="text/javascript">
-  var perfilcomplete = <?php echo $user->complete ?>;
     window.onload = function(){
+
+      var perfilcomplete = <?php echo $user->complete ?>;
       var button = document.getElementById('create-product');
+      var modal = document.getElementById('myModal');
+      var span = document.getElementsByClassName("close")[0];
       button.addEventListener('click', function(event){
         event.preventDefault();
         if(perfilcomplete){
           window.location = this.href;
         }else{
-          window.alert('Recordá completar tu perfil con todos tus datos y vincular tu cuenta de MercadoPago, de otra forma no podrás publicar tus productos.');
+          modal.style.display = "block";
         }
       });
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+
     }
 
   </script>
-
 
 
 

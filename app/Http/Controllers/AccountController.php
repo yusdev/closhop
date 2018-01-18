@@ -29,11 +29,7 @@ class AccountController extends Controller
         $user = Auth::user();
         $provincias = Storage::disk('local')->get('provincias.json');
         $provincias = json_decode($provincias, true);
-
-        // foreach ($provincias['provincias'] as $provincia){
-        //     dd($provincia);
-        // }
-
+        // \Session::flash('flash_message','Office successfully added.');
         return view('account',['user'=>$user, 'provincias'=>$provincias]);
     }
 
@@ -63,6 +59,8 @@ class AccountController extends Controller
       ];
       $vendor->update($upload);
       $request->flash();
-      return redirect('/v/micuenta')->withInput();
+      session()->flash('saved');
+      return redirect()->route('myaccount')->withInput();
+
     }
 }

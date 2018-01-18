@@ -89,12 +89,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-
     <script src="{{ asset('js/dropzone.js') }}"></script>
 
     <!-- SELECT2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="/js/select2.min.js"></script>
+    
     @yield('scripts')
+
 </body>
 </html>

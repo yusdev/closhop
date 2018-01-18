@@ -57,33 +57,52 @@
   </form>
 
 </div>
+
+@include('modals.success')
+
 @endsection
 
 
+<?php if(session()->has('saved')){
+  $saved = true;
+}else{
+  $saved = false;
+}?>
 
-
-
-
-
-@section('scripts')
 <script type="text/javascript">
-    $(document).ready(function () {
-        // inicializamos el plugin
-        $('#sizes').select2({
-            // Activamos la opcion "Tags" del plugin select2
-            tags: true,
-        });
-        $('#colors').select2({
-            // Activamos la opcion "Tags" del plugin select2
-            tags: true,
-        });
-    });
+    window.onload = function(){
+      // Get the modal
+      var modal = document.getElementById('myModal');
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
 
-    $(".dropzone").dropzone({
-        maxFiles: 1,
-        maxfilesexceeded: function(file) {
-            this.removeAllFiles();
-        }
-    })
+      var saved = <?php echo $saved; ?>;
+
+      if(saved){
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+
+      $(document).ready(function () {
+          // inicializamos el plugin
+          $('#sizes').select2({
+              // Activamos la opcion "Tags" del plugin select2
+              tags: true,
+          });
+          $('#colors').select2({
+              // Activamos la opcion "Tags" del plugin select2
+              tags: true,
+          });
+      });
+    }
 </script>
-@endsection

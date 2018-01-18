@@ -87,7 +87,8 @@ class ProductController extends Controller
             $product->sizes()->attach($sizeID,['color_id'=> $colorID, 'stock'=>true]);
           }
         }
-        return redirect('/v/products');
+        session()->flash('saved');
+        return redirect('/v/products/'.$productId.'/edit')->withInput();
     }
 
     /**
@@ -152,7 +153,8 @@ class ProductController extends Controller
         }
 
       $request->flash();
-      return redirect('/v/products')->withInput();
+      session()->flash('saved');
+      return redirect('/v/products/'.$product->id.'/edit')->withInput();
     }
 
     /**
