@@ -12,12 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Auth::routes();
 
-Route::prefix('v')->group(function () {
+
+Route::prefix('vendor')->group(function () {
+  Auth::routes();
+  Route::get('/', function(){
+    return view('vendor-landing');
+  });
   Route::get('micuenta', 'AccountController@index')->name('myaccount');
   Route::post('micuenta/{id}', 'AccountController@update')->name('updateaccount');
   Route::resource('products', 'ProductController');

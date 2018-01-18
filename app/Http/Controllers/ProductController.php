@@ -88,7 +88,7 @@ class ProductController extends Controller
           }
         }
         session()->flash('saved');
-        return redirect('/v/products/'.$productId.'/edit')->withInput();
+        return redirect('/vendor/products/'.$productId.'/edit')->withInput();
     }
 
     /**
@@ -150,7 +150,7 @@ class ProductController extends Controller
 
       $request->flash();
       session()->flash('saved');
-      return redirect('/v/products/'.$product->id.'/edit')->withInput();
+      return redirect('/vendor/products/'.$product->id.'/edit')->withInput();
     }
 
     /**
