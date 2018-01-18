@@ -23,5 +23,8 @@ Route::prefix('v')->group(function () {
   Route::resource('products', 'ProductController');
 });
 
+Route::get('/productos', 'FrontProductController@index')->name('front.products.index');
+Route::get('/productos/{id}', 'FrontProductController@show')->name('front.products.show');
+
 
 Route::get('talles', 'ProductController@sizes');
