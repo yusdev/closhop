@@ -12,7 +12,8 @@ use App\Stock;
 class FrontProductController extends Controller
 {
     public function index(){
-
+      $products = Product::all();
+      return view('home', ['products'=>$products]);
     }
 
     public function show($id){
