@@ -27,7 +27,7 @@
 
   <div id="app">
 
-    <div class="" style="margin-bottom:30px;"> <!-- Contenedor del header-->
+    <div class=""> <!-- Contenedor del header-->
       <div class="container" style="border-bottom: 2px black solid;">
 
         <div class="d-flex justify-content-between">
@@ -64,6 +64,18 @@
 
 
       @yield('content')
+
+
+      <div class=""> <!-- Contenedor del footer -->
+
+        <div class="container" style="border-top: 2px solid black;">
+          <p>Preguntas Frecuentes</p>
+          <p>Términos y Condiciones</p>
+          <p>Políticas de privacidad</p>
+          <p>2018 CLOSHOP - Todos los derechos reservados ©</p>
+        </div>
+
+      </div>
 
   </div>
 
