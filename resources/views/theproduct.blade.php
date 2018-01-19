@@ -9,20 +9,28 @@
 
     <div class="col-md-1" style="padding:0">
       <img src="{{ asset('storage/' . $product->mainimage) }}" class="col-md-12 dot" onclick="currentSlide(1)" style="padding:0">
-      <img src="{{ asset('storage/' . $product->aditionalimage1) }}" class="col-md-12 dot" onclick="currentSlide(2)" style="padding:0">
-      <img src="{{ asset('storage/' . $product->aditionalimage2) }}" class="col-md-12 dot" onclick="currentSlide(3)" style="padding:0">
+      @if($product->aditionalimage1)
+        <img src="{{ asset('storage/' . $product->aditionalimage1) }}" class="col-md-12 dot" onclick="currentSlide(2)" style="padding:0">
+      @endif
+      @if($product->aditionalimage2)
+        <img src="{{ asset('storage/' . $product->aditionalimage2) }}" class="col-md-12 dot" onclick="currentSlide(3)" style="padding:0">
+      @endif
     </div>
 
     <div class="slideshow-container col-md-4">
       <div class="mySlides">
         <img src="{{ asset('storage/' . $product->mainimage) }}" style="width:100%">
       </div>
+      @if($product->aditionalimage1)
         <div class="mySlides">
           <img src="{{ asset('storage/' . $product->aditionalimage1) }}" style="width:100%">
         </div>
-      <div class="mySlides">
-        <img src="{{ asset('storage/' . $product->aditionalimage2) }}" style="width:100%">
-      </div>
+      @endif
+      @if($product->aditionalimage2)
+        <div class="mySlides">
+          <img src="{{ asset('storage/' . $product->aditionalimage2) }}" style="width:100%">
+        </div>
+      @endif
 
       <a style ="text-decoration:none" class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a style ="text-decoration:none" class="next" onclick="plusSlides(1)">&#10095;</a>

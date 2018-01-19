@@ -41,6 +41,17 @@ class ProductController extends Controller
      */
     public function store(Request $request) //Guardar un nuevo producto
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'description'  => 'required',
+            'originalprice'  => 'required|numeric',
+            'saleprice'  => 'nullable|numeric',
+            'mainimage'  => 'required',
+            'sizes'  => 'required',
+            'colors'  => 'required',
+            'aditionalimage'  => 'nullable|image'
+        ]);
+
         $mainfile = $request->file('mainimage');
         $mainext = $mainfile->getClientOriginalExtension();
         $mainname = \Auth::user()->id . uniqid();
@@ -58,7 +69,7 @@ class ProductController extends Controller
 
         /*imagenes adicionales*/
         $images = $request->file('aditionalimage');
-        if(count($images)>0){
+        if(isset($images)){
           for($i = 0; $i < count($images); $i++) {
             $ext = $images[$i]->getClientOriginalExtension();
             $name = \Auth::user()->id . uniqid();
@@ -87,6 +98,7 @@ class ProductController extends Controller
             $product->sizes()->attach($sizeID,['color_id'=> $colorID, 'stock'=>true]);
           }
         }
+        $request->flash();
         session()->flash('saved');
         return redirect('/vendor/products/'.$productId.'/edit')->withInput();
     }
