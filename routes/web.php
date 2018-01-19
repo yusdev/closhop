@@ -23,6 +23,8 @@ Route::prefix('vendor')->group(function () {
   Route::get('micuenta', 'AccountController@index')->name('myaccount');
   Route::post('micuenta/{id}', 'AccountController@update')->name('updateaccount');
   Route::resource('products', 'ProductController');
+  Route::put('products/{id}/pause', 'ProductController@pause')->name('products.pause');
+  Route::put('products/{id}/active', 'ProductController@active')->name('products.active');
 });
 
 Route::get('/productos', 'FrontProductController@index')->name('front.products.index');

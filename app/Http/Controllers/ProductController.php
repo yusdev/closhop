@@ -62,7 +62,8 @@ class ProductController extends Controller
           'description' => $request->input('description'),
           'originalprice' => $request->input('originalprice'),
           'saleprice' => $request->input('saleprice'),
-          'mainimage' => $mainpath
+          'mainimage' => $mainpath,
+          'on' => true
         ];
         $productCreated = \Auth::user()->products()->create($uploadProduct);
         $productId = $productCreated->id;
@@ -192,5 +193,19 @@ class ProductController extends Controller
       $product->delete();
       return redirect('/vendor/products');
     }
+
+  public function pause($id){
+    $product = Product::findOrFail($id);
+    $product->on = false;
+    $product->save();
+    return redirect('/vendor/products');
+  }
+
+  public function active($id){
+    $product = Product::findOrFail($id);
+    $product->on = true;
+    $product->save();
+    return redirect('/vendor/products');
+  }
 
 }

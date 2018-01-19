@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('mainimage');
             $table->string('aditionalimage1')->nullable();
             $table->string('aditionalimage2')->nullable();
+            $table->boolean('on');
             $table->timestamps();
         });
     }

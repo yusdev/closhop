@@ -12,7 +12,7 @@ use App\Stock;
 class FrontProductController extends Controller
 {
     public function index(){
-      $products = Product::all();
+      $products = Product::all()->where('on',true);
       return view('home', ['products'=>$products]);
     }
 

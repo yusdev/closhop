@@ -17,10 +17,29 @@
             <div class="product-container clo-container" >
                   <li><img src="{{ asset('storage/' . $product->mainimage) }}" width="100px"></li>
                   <li style="margin:30px"><a target="_blank" href="{{route('front.products.show', ['id'=>$product->id])}}">{{ $product->name }}</a> <p> {{ '$ '.$product->originalprice }} </p></li>
-                  <li style="margin:30px"><p> Publicada </p></li>
-                  <!-- <li><a type="submit" class="btn btn-xs btn-primary">Eliminar</a></li> -->
+                  <li style="margin:30px">
+                    @if($product->on)
+                      <p>Publicada</p>
+                    @else
+                      <p>Pausada</p>
+                    @endif
+                  </li>
                   <li><a href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span></a></li>
-                  <li><a type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pause"></span>Pausar</a></li>
+                  <li>
+                    @if($product->on)
+                      <form class="" action="{{route('products.pause', $product->id)}}" method="post">
+                        {{ method_field('PUT') }}
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pause"></span>Pausar</button>
+                      </form>
+                    @else
+                      <form class="" action="{{route('products.active', $product->id)}}" method="post">
+                        {{ method_field('PUT') }}
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-repeat"></span> Activar</button>
+                      </form>
+                    @endif
+                  </li>
                   <li>
                     <form class="" action="{{ route('products.destroy', $product->id)}}" method="post">
                       {{ method_field('DELETE') }}
