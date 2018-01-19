@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Size;
 use App\Color;
 use App\Product;
@@ -173,7 +174,23 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $product = Product::find($id);
+      $mainimage = '/storage'.$product->mainimage;
+      if($product->aditionalimage1){
+        $aditionalimage1 = '/storage'.$product->aditionalimage1;
+      }
+      if($product->aditionalimage2){
+        $aditionalimage2 = '/storage'.$product->aditionalimage2;
+      }
+      Storage::delete('/public' . $mainimage);
+      if(isset($aditionalimage1)){
+        Storage::delete('/public' . $aditionalimage1);
+      }
+      if(isset($aditionalimage2)){
+        Storage::delete('/public' . $aditionalimage2);
+      }
+      $product->delete();
+      return redirect('/vendor/products');
     }
 
 }

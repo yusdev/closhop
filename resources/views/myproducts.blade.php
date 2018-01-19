@@ -19,8 +19,15 @@
                   <li style="margin:30px"><a target="_blank" href="{{route('front.products.show', ['id'=>$product->id])}}">{{ $product->name }}</a> <p> {{ '$ '.$product->originalprice }} </p></li>
                   <li style="margin:30px"><p> Publicada </p></li>
                   <!-- <li><a type="submit" class="btn btn-xs btn-primary">Eliminar</a></li> -->
-                  <li><a href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-xs btn-primary">Editar</a></li>
-                  <li><a type="submit" class="btn btn-xs btn-primary">Pausar</a></li>
+                  <li><a href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                  <li><a type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pause"></span>Pausar</a></li>
+                  <li>
+                    <form class="" action="{{ route('products.destroy', $product->id)}}" method="post">
+                      {{ method_field('DELETE') }}
+                      {{ csrf_field() }}
+                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estás seguro de querer eliminar el producto?')"><span class="glyphicon glyphicon-trash"></span></button>
+                    </form>
+                  </li>
             </div>
           <?php endforeach; ?>
         </ul>
