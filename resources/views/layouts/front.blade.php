@@ -30,9 +30,20 @@
     <div class="" style="margin-bottom:30px;"> <!-- Contenedor del header-->
       <div class="container" style="border-bottom: 2px black solid;">
 
-        <div class="d-flex justify-content-end">
-          <div class="mr-auto p-2"> <!-- Contenedor del Logo-->
+        <div class="d-flex justify-content-between">
+          <div class=""> <!-- Contenedor del Logo-->
             <a href="{{ url('/') }}"><img src="{{ asset('storage/closhop/closhopLogo.png') }}" alt="closhop" height="50px"></a>
+          </div>
+
+          <div class="align-self-end">
+            <div class="searchbox">
+              <form class="" action="{{url('/')}}" method="get">
+                <div class="form-group searchbox-submit d-flex justify-content-between">
+                  <input type="text" name="" value="" placeholder="BUSCAR">
+                  <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+              </form>
+            </div>
           </div>
 
           <div class="align-self-center">

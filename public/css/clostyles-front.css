@@ -126,3 +126,17 @@ textarea {
   float:left;
   margin-left: 3px;
 }
+
+.searchbox-submit{
+  border-bottom: 1px solid black;
+  min-width: 500px;
+}
+
+.searchbox-submit input{
+  border:none;
+  width: 90%;
+}
+
+.searchbox-submit input:focus{
+  outline: none;
+}

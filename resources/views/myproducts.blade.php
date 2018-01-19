@@ -15,8 +15,14 @@
         <ul class="product-list">
           <?php foreach ($products as $product): ?>
             <div class="product-container clo-container" >
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div class="">
                   <li><img src="{{ asset('storage/' . $product->mainimage) }}" width="100px"></li>
                   <li style="margin:30px"><a target="_blank" href="{{route('front.products.show', ['id'=>$product->id])}}">{{ $product->name }}</a> <p> {{ '$ '.$product->originalprice }} </p></li>
+                </div>
+
+                <div class="">
                   <li style="margin:30px">
                     @if($product->on)
                       <p>Publicada</p>
@@ -24,13 +30,16 @@
                       <p>Pausada</p>
                     @endif
                   </li>
+                </div>
+
+                <div class="">
                   <li><a href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span></a></li>
                   <li>
                     @if($product->on)
                       <form class="" action="{{route('products.pause', $product->id)}}" method="post">
                         {{ method_field('PUT') }}
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pause"></span>Pausar</button>
+                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Seguro que querés pausar el producto?')"><span class="glyphicon glyphicon-pause" ></span>Pausar</button>
                       </form>
                     @else
                       <form class="" action="{{route('products.active', $product->id)}}" method="post">
@@ -47,6 +56,9 @@
                       <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estás seguro de querer eliminar el producto?')"><span class="glyphicon glyphicon-trash"></span></button>
                     </form>
                   </li>
+                </div>
+
+              </div>
             </div>
           <?php endforeach; ?>
         </ul>
