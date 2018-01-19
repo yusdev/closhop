@@ -1,15 +1,16 @@
 @extends('layouts.front')
 
 @section('content')
-
+<div class="container">
   @foreach($products as $product)
-    <div class="">
-      <img width="300px" src="{{ asset('storage/' . $product->mainimage) }}">
-      <h4>{{$product->name}}</h4>
+    <div class="col-md-3">
+      <a href="{{route('front.products.show', ['id'=>$product->id])}}"><img width="100%" src="{{ asset('storage/' . $product->mainimage) }}"></a>
+      <a href="#"><h4>{{$product->name}}</h4></a>
       <p>$ {{$product->originalprice}}</p>
-      <a href="{{route('front.products.show', ['id'=>$product->id])}}" class="btn btn-warning" type="button"style="margin-top:20px"> VER </a>
     </div>
   @endforeach
+</div>
+
 
 
 @endsection
