@@ -12,31 +12,49 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/css/clostyles.css">
+    <link rel="stylesheet" href="/css/clostyles-front.css">
 
     <!-- SELECT2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        CLOSHOP
-                    </a>
-                </div>
-            </div>
-        </nav>
 
-        @yield('content')
+  <div id="app">
+
+    <div class="" style="margin-bottom:30px;"> <!-- Contenedor del header-->
+      <div class="container" style="border-bottom: 2px black solid;">
+
+        <div class="d-flex justify-content-end">
+          <div class="mr-auto p-2"> <!-- Contenedor del Logo-->
+            <a href="{{ url('/') }}"><img src="{{ asset('storage/closhop/closhopLogo.png') }}" alt="closhop" height="50px"></a>
+          </div>
+
+          <div class="align-self-center">
+            <nav>
+              <ul class="red-social">
+                <li><a href="https://www.facebook.com/closhop.blog" target="_blank"><img src="{{ asset('storage/closhop/facebook.png') }}" alt="" height="30px"></a></li>
+                <li><a href="https://www.instagram.com/closhop.ok/" target="_blank"><img src="{{ asset('storage/closhop/instagram.png') }}" alt="" height="30px"></a></li>
+                <li><a href="#" target="_blank"><img src="{{ asset('storage/closhop/twitter.png') }}" alt="" height="30px"></a></li>
+                <li><a href="https://closhop.blog/" target="_blank"><img src="{{ asset('storage/closhop/blog-icon.png') }}" alt="" height="30px"></a></li>
+                <li><a href="#" target="_blank"><img src="{{ asset('storage/closhop/contact-icon.png') }}" alt="" height="31px"></a></li>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+
     </div>
+
+
+      @yield('content')
+
+  </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

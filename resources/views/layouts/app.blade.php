@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/css/clostyles.css">
+    <link rel="stylesheet" href="/css/clostyles-back.css">
     <link rel="stylesheet" href="/css/dropzone.css">
 
     <!-- SELECT2 -->

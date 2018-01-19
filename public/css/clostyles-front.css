@@ -1,0 +1,128 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  float:left;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+.product-list li {
+  float:none;
+  display: inline-block;
+}
+
+.product-container {
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.clo-container {
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+
+
+/* .select2-results__option{display: none;} */
+
+/* SLIDES DE IMAGENES: Detalle del producto */
+
+.mySlides {display: none}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: rgba(0, 0, 0, 0.6);;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 16px;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(240, 173, 78, 0.6);
+  color: white;
+}
+
+.dot-active, .dot:hover {
+  filter: opacity(.5);
+}
+
+
+
+
+/************ MODAL ************/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+/**********************************************************************************/
+
+.red-social li{
+  display:inline-block;
+  float:left;
+  margin-left: 3px;
+}
