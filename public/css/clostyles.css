@@ -48,9 +48,9 @@ header {
   align-self: center;
 }
 
-/* .vendor ul li {
+.vendor ul li {
   float: left;
-} */
+}
 
 .login-register li{
   margin-left: 10px;

@@ -24,12 +24,14 @@
           <a class="logo" href="{{route('vendor.index')}}">
             <img src="{{ asset('storage/closhop/closhopLogoBlanco.png')}}" alt="logo"/>
           </a>
-          <div class="vendor">
+
             @guest
+            <div class="vendor">
               <ul class="login-register">
                 <li><a href="{{ route('login') }}">INGRESAR</a></li>
                 <li><a href="{{ route('register') }}">REGISTRATE</a></li>
               </ul>
+            </div>
             @else
 
             <div class="share-wrap">
@@ -37,12 +39,12 @@
               <ul>
                 <li> <a href="{{ route('myaccount') }}"> <span class="fa fa-user"></span> Mi cuenta</a> </li>
                 <li> <a href="{{ route('products.index') }}"> <span class="fa fa-tag"></span> Productos </a> </li>
-                <li><a href="#"> Ventas</a></li>
+                <li> <a href="{{ route('products.index') }}"> <span class="fa fa-dollar"></span> Ventas </a> </li>
                 <li>
                   <a href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
-                               <span class="fa fa-sign-out"></span>Salir
+                               <span class="fa fa-sign-out"></span> Salir
                   </a>
 
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -77,7 +79,6 @@
               </ul>
             </div> -->
             @endguest
-          </div>
         </header>
       </div>
     </div>
