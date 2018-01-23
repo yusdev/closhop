@@ -11,93 +11,168 @@
     <title>CLOSHOP</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/css/clostyles-back.css">
-    <link rel="stylesheet" href="/css/dropzone.css">
-
-    <!-- SELECT2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/select2.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
+      <!-- SELECT2 -->
+      <link rel="stylesheet" href="/css/select2.min.css">
+      <!-- SB Admin 2 - Bootstrap Admin Theme -->
+        <!-- Bootstrap Core CSS -->
+        <link href="/css/sb-admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- MetisMenu CSS -->
+        <link href="/css/sb-admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="/css/sb-admin/dist/css/sb-admin-2.css" rel="stylesheet">
+        <!-- Morris Charts CSS -->
+        <link href="/css/sb-admin/vendor/morrisjs/morris.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="/css/sb-admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/vendor') }}">
-                        CLOSHOP
-                    </a>
-                </div>
+  <div id="wrapper">
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+      <!-- HEADER + SIDEBAR START -->
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom:0;background-color:#000">
+          <div class="navbar-header" style="background-color:#000">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="padding:5px"href="{{route('vendor.index')}}"><img src="{{ asset('storage/closhop/closhopLogoBlanco.png')}}" height=40px/></a>
+          </div>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Ingresar</a></li>
-                            <li><a href="{{ route('register') }}">Registrate</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->shop_name }} <span class="caret"></span>
-                                </a>
+          <!-- HEADER START -->
 
-                                <ul class="dropdown-menu">
-                                    <li> <a href="{{ route('myaccount') }}"> Mi cuenta </a> </li>
-                                    <li> <a href="{{ route('products.index') }}"> Productos </a> </li>
-                                    <li> <a href="#"> Mis ventas </a> </li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Salir
-                                        </a>
+          <ul class="nav navbar-top-links navbar-right" style="background-color:#000;margin-right:25px">
+              @guest
+                  <li><a href="{{ route('login') }}">Ingresar</a></li>
+                  <li><a href="{{ route('register') }}">Registrate</a></li>
+              @else
+              <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      <i style="padding-right:5px">{{ Auth::user()->name }}</i><i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user">
+                      <li><a href="#"><i class="fa fa-user fa-fw"></i> Mi cuenta </a>
+                      </li>
+                      <li><a href="#"><i class="fa fa-gear fa-fw"></i> Productos</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Salir </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                          </form>
+                      </li>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                  </ul>
+              </li>
+              @endguest
+          </ul>
+          <!-- HEADER END-->
 
-        @yield('content')
+
+          <!-- MENU SIDEBAR START -->
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                      <li class="sidebar-search">
+                          <div class="input-group custom-search-form">
+                              <input type="text" class="form-control" placeholder="Search...">
+                              <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </span>
+                          </div>
+                      </li>
+
+                      <!-- OPTION -->
+                      <li>
+                          <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                      </li>
+
+                      <li>
+                          <a href="{{ route('myaccount') }}"><i class="fa fa-user fa-fw"></i> Mi cuenta </a>
+                      </li>
+
+                      <!-- MENU OPTION WITH SUBOPTIONS -->
+                      <li>
+                          <a href="#"><i class="fa fa-tag fa-fw"></i> Productos <span class="fa arrow"></span></a>
+                          <ul class="nav nav-second-level">
+                              <li>
+                                  <a href="{{ route('products.index') }}">Mis productos</a>
+                              </li>
+                              <li>
+                                  <a href="{{route('products.create')}}">Nuevo producto</a>
+                              </li>
+                          </ul>
+                      </li>
+
+                      <!-- OPTION -->
+                      <li>
+                          <a href="#"><i class="fa fa-dollar fa-fw"></i> Mis ventas</a>
+                      </li>
+
+                      <!-- OPTION -->
+                      <li>
+                          <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Salir</a>
+                      </li>
+
+
+                  </ul>
+              </div>
+          </div> <!-- SIDEBAR END -->
+      </nav> <!-- HEADER + SIDEBAR END -->
+
+
+
+      {{-- CONTENT ----------------------------------------------------------- --}}
+
+      <!-- ADMIN PANEL BODY START -->
+      <div id="page-wrapper">
+          @yield('content')
+      </div>
+
+      {{-- FOOTER ----------------------------------------------------------- --}}
+
+      <footer class="footer">
+        <div class="footer-content">
+              <p> 2017 © CLOSHOP.  Todos los derechos reservados</p>
+              <p>by CLO</p>
+        </div>
+      </footer>
+
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/dropzone.js') }}"></script>
 
-    <!-- SELECT2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <!-- SB Admin 2 - Bootstrap Admin Theme -->
+    <!-- jQuery -->
+    <script src="/sb-admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/sb-admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/sb-admin/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/sb-admin/vendor/raphael/raphael.min.js"></script>
+    <script src="/sb-admin/vendor/morrisjs/morris.min.js"></script>
+    <script src="/sb-admin/data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/sb-admin/dist/js/sb-admin-2.js"></script>
+
+  <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+  <!-- SELECT2 -->
     <script src="/js/select2.min.js"></script>
 
-    @yield('scripts')
+  @yield('scripts')
 
-</body>
+  </body>
 </html>

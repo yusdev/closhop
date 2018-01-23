@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'FrontProductController@index');
+Route::get('/', 'FrontProductController@index')->name('index');
 
 
 
@@ -19,7 +19,7 @@ Route::prefix('vendor')->group(function () {
   Auth::routes();
   Route::get('/', function(){
     return view('vendor-landing');
-  });
+  })->name('vendor.index');
   Route::get('micuenta', 'AccountController@index')->name('myaccount');
   Route::post('micuenta/{id}', 'AccountController@update')->name('updateaccount');
   Route::resource('products', 'ProductController');

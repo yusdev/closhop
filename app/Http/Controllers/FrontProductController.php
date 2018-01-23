@@ -13,7 +13,7 @@ class FrontProductController extends Controller
 {
     public function index(){
       $products = Product::all()->where('on',true);
-      return view('home', ['products'=>$products]);
+      return view('front.home', ['products'=>$products]);
     }
 
     public function show($id){
@@ -21,6 +21,6 @@ class FrontProductController extends Controller
         $sizes = $product->sizes()->groupBy('size_id')->get();
         $colors = $product->colors()->groupBy('color_id')->get();
         $stock = DB::table('color_product_size')->where('product_id', $product->id)->get();
-        return view('theproduct',['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors, 'stock'=>$stock]);
+        return view('front.theproduct',['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors, 'stock'=>$stock]);
     }
 }

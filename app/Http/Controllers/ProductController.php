@@ -49,8 +49,7 @@ class ProductController extends Controller
             'saleprice'  => 'nullable|numeric',
             'mainimage'  => 'required',
             'sizes'  => 'required',
-            'colors'  => 'required',
-            'aditionalimage'  => 'nullable|image'
+            'colors'  => 'required'
         ]);
 
         $mainfile = $request->file('mainimage');

@@ -116,3 +116,10 @@ textarea {
     text-decoration: none;
     cursor: pointer;
 }
+
+
+/* DROP DOWN */
+
+.dropdown {
+  cursor: pointer;
+}

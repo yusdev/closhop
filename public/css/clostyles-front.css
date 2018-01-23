@@ -16,16 +16,13 @@ textarea {
   min-height: 120px;
 }
 
-.product-list li {
-  float:none;
-  display: inline-block;
+.header {
+  margin-bottom: 20px;
 }
 
-.product-container {
-  margin-bottom: 15px;
-  padding: 15px;
+.footer {
+  margin-top: 30px;
 }
-
 .clo-container {
   background-color: #ffffff;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
@@ -34,7 +31,7 @@ textarea {
 
 /* .select2-results__option{display: none;} */
 
-/* SLIDES DE IMAGENES: Detalle del producto */
+/********************* SLIDES DE IMAGENES: Detalle del producto ***************/
 
 .mySlides {display: none}
 

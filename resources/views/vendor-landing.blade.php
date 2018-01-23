@@ -1,7 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
 @section('content')
+<div style="height:100vh;background-image: url('storage/closhop/fondo.png');background-size:cover;">
+  <!-- <img style="background-size:cover" src="{{ asset('storage/closhop/fondo.png')}}" width="100%" alt=""> -->
+  <div class="d-flex justify-content-center">
+    <div class="clo-container" style="display:inline-block;padding:30px;margin-top:160px;">
+      <div class="d-flex align-self-end" style="text-align:center">
 
-  <img src="https://www.lookaholics.com/wp-content/uploads/2016/02/VENDE-TUS-PRODUCTOS-CON-NOSOTROS2-736x300.jpg" width="100%" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
 
 @endsection
