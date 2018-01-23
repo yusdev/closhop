@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('back.afterlogin')
 
-@section('content')
+@section('subcontent')
 <div class="container">
   <form method="POST" enctype="multipart/form-data" action="{{route('products.update', $product->id)}}">
   {{ csrf_field() }}

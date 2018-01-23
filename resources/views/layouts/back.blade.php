@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <title>Closhop vendor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/clostyles.css">
 
     <!-- FONT AWESOME -->
@@ -27,7 +31,31 @@
                 <li><a href="{{ route('register') }}">REGISTRATE</a></li>
               </ul>
             @else
-            <div class="dropdown" >
+
+            <div class="share-wrap">
+              <div class="main-bar"> {{ Auth::user()->shop_name }} <span class="fa fa-sort-desc"></span> </div>
+              <ul>
+                <li> <a href="{{ route('myaccount') }}"> <span class="fa fa-user"></span> Mi cuenta</a> </li>
+                <li> <a href="{{ route('products.index') }}"> <span class="fa fa-tag"></span> Productos </a> </li>
+                <li><a href="#"> Ventas</a></li>
+                <li>
+                  <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                               <span class="fa fa-sign-out"></span>Salir
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+                </li>
+              </ul>
+            </div>
+
+
+
+
+            <!-- <div class="dropdown" >
               <a class="user"> {{ Auth::user()->shop_name }} <span class="fa fa-sort-desc"></span> </a>
 
               <ul class="dropdown-content">
@@ -47,7 +75,7 @@
                       </form>
                   </li>
               </ul>
-            </div>
+            </div> -->
             @endguest
           </div>
         </header>
@@ -71,15 +99,26 @@
     <script type="text/javascript">
 
 
-        var dropdown = document.querySelector('.user');
-        var dropdownContent = document.querySelector('.dropdown-content');
-        dropdown.addEventListener('click', function(){
-          if(dropdownContent.style.display == 'none'){
-            dropdownContent.style.display = 'block';
-          }else{
-            dropdownContent.style.display = 'none';
-          }
-        });
+        // var dropdown = document.querySelector('.user');
+        // var dropdownContent = document.querySelector('.dropdown-content');
+        // dropdown.addEventListener('click', function(){
+        //   if(dropdownContent.style.display == 'none'){
+        //     dropdownContent.style.display = 'block';
+        //   }else{
+        //     dropdownContent.style.display = 'none';
+        //   }
+        // });
+
+        window.onload = function(){
+
+          $(document).ready(function(e){
+             $('.main-bar').on('click',function(){
+                $('.share-wrap>ul').slideToggle(280);
+             });
+          });
+        }
+
+
 
 
     </script>

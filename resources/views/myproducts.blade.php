@@ -1,71 +1,65 @@
-@extends('layouts.app')
+@extends('back.afterlogin')
 
-@section('content')
-  <div class="container">
-    <div class="row">
+@section('subcontent')
 
-      <div class="col-md-12">
-        <a id="create-product" href= "{{ route('products.create') }}">
-          <div class="clo-container" style="background-color:#000;margin-bottom:30px;text-align:center">
-            <img src="https://www.dmanetwork.com/share/dma/gfx/icon-add-grey.png" width="30px" style="padding:10px 0">
-            <p style="font-size:30px;display:inline-block"></p>
-          </div>
-        </a>
 
-        <ul class="product-list">
+        <a id="create-product" class="button" href= "{{ route('products.create') }}"> Publicar </a>
+
+        <div class="product-list">
           <?php foreach ($products as $product): ?>
-            <div class="product-container clo-container" >
-              <div class="d-flex justify-content-between align-items-center">
+            <ul class="product-container clo-container" >
+                <li>
+                  <img src="{{ asset('storage/' . $product->mainimage) }}" width="100px">
+                </li>
 
-                <div class="">
-                  <li><img src="{{ asset('storage/' . $product->mainimage) }}" width="100px"></li>
-                  <li style="margin:30px"><a target="_blank" href="{{route('front.products.show', ['id'=>$product->id])}}">{{ $product->name }}</a> <p> {{ '$ '.$product->originalprice }} </p></li>
-                </div>
+                <li>
+                  <a target="_blank" href="{{route('front.products.show', ['id'=>$product->id])}}">{{ $product->name }}</a> <p> {{ '$ '.$product->originalprice }} </p>
+                </li>
 
-                <div class="">
-                  <li style="margin:30px">
+                <li>
                     @if($product->on)
                       <p>Publicada</p>
                     @else
                       <p>Pausada</p>
                     @endif
-                  </li>
-                </div>
+                </li>
 
-                <div class="">
-                  <li><button href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-sm btn-info"><span class="fa fa-pencil"></span></button></li>
-                  <li>
-                    @if($product->on)
-                      <form class="" action="{{route('products.pause', $product->id)}}" method="post">
-                        {{ method_field('PUT') }}
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Seguro que querés pausar el producto?')"><span class="fa fa-pause" ></span>Pausar</button>
-                      </form>
-                    @else
-                      <form class="" action="{{route('products.active', $product->id)}}" method="post">
-                        {{ method_field('PUT') }}
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-sm btn-primary"><span class="fa fa-repeat"></span> Activar</button>
-                      </form>
-                    @endif
-                  </li>
-                  <li>
-                    <form class="" action="{{ route('products.destroy', $product->id)}}" method="post">
-                      {{ method_field('DELETE') }}
-                      {{ csrf_field() }}
-                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estás seguro de querer eliminar el producto?')"><span class="fa fa-trash-o"></span></button>
-                    </form>
-                  </li>
-                </div>
+                <li>
+                  <ul>
+                    <li>
+                      <button href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-sm btn-info"><span class="fa fa-pencil"></span></button>
+                    </li>
 
-              </div>
-            </div>
+                    <li>
+                      @if($product->on)
+                        <form class="" action="{{route('products.pause', $product->id)}}" method="post">
+                          {{ method_field('PUT') }}
+                          {{ csrf_field() }}
+                          <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Seguro que querés pausar el producto?')"><span class="fa fa-pause" ></span>Pausar</button>
+                        </form>
+                      @else
+                        <form class="" action="{{route('products.active', $product->id)}}" method="post">
+                          {{ method_field('PUT') }}
+                          {{ csrf_field() }}
+                          <button type="submit" class="btn btn-sm btn-primary"><span class="fa fa-repeat"></span> Activar</button>
+                        </form>
+                      @endif
+                    </li>
+
+                    <li>
+                      <form class="" action="{{ route('products.destroy', $product->id)}}" method="post">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estás seguro de querer eliminar el producto?')"><span class="fa fa-trash-o"></span></button>
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
           <?php endforeach; ?>
-        </ul>
+        </div>
 
-      </div>
-    </div>
-  </div>
 
   @include('modals.complete')
 
