@@ -97,7 +97,7 @@
     </section>
 
     <section id="content2"> <!-- MercadoPago -->
-      <div class="" style="display: flex; justify-content:center;">
+      <div class="mercadopago">
         <a href="" type="button" class="button" style="width: 50%;">Vincular cuenta de MercadoPago</a>
         <p class="" style="display:block">¿Por qué debo vincular mi cuenta de MercadoPago?</p>
       </div>

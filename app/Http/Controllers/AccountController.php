@@ -30,7 +30,7 @@ class AccountController extends Controller
         $provincias = Storage::disk('local')->get('provincias.json');
         $provincias = json_decode($provincias, true);
         // \Session::flash('flash_message','Office successfully added.');
-        return view('account',['user'=>$user, 'provincias'=>$provincias]);
+        return view('back.account',['user'=>$user, 'provincias'=>$provincias]);
     }
 
     public function update(Request $request, $id)

@@ -131,6 +131,40 @@ footer p {
   cursor: pointer;
 }
 
+.btn {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button-edit {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.button-pause {
+  color: #fff;
+  background-color: rgb(186, 186, 186);
+  border-color: rgb(186, 186, 186);
+}
+
+.button-active {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.button-delete {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
 .forgetpass {
   color: #000;
   font-size: 12px;
@@ -170,7 +204,7 @@ footer p {
 
 #page-wrapper {
   padding: 0 15px;
-  min-height: 568px;
+  min-height: 700px;
   background-color: white;
 }
 @media (min-width: 768px) {
@@ -310,6 +344,18 @@ footer p {
   margin-bottom: 20px;
 }
 
+.mercadopago {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mercadopago a {
+    text-align: center;
+    margin: 20px;
+}
+
 /************ MODAL ************/
 
 /* The Modal (background) */
@@ -328,12 +374,15 @@ footer p {
 
 /* Modal Content/Box */
 .modal-content {
+    border-radius: 5px;
     background-color: #fefefe;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
+    border-top: 5px solid #FFC840;
 }
+
 
 /* The Close Button */
 .close {
@@ -358,6 +407,9 @@ footer p {
 .product-container {
   margin-bottom: 15px;
   padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .clo-container {

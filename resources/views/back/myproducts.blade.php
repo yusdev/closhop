@@ -27,7 +27,10 @@
                 <li>
                   <ul>
                     <li>
-                      <button href="{{route('products.edit', $product->id)}}" type="submit" class="btn btn-sm btn-info"><span class="fa fa-pencil"></span></button>
+                      <form class="" action="{{ route('products.edit', $product->id)}}" method="get">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn button-edit"><span class="fa fa-pencil"></span></button>
+                      </form>
                     </li>
 
                     <li>
@@ -35,13 +38,13 @@
                         <form class="" action="{{route('products.pause', $product->id)}}" method="post">
                           {{ method_field('PUT') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Seguro que querés pausar el producto?')"><span class="fa fa-pause" ></span>Pausar</button>
+                          <button type="submit" class="btn button-pause" onclick="return confirm('Seguro que querés pausar el producto?')"><span class="fa fa-pause" ></span> Pausar</button>
                         </form>
                       @else
                         <form class="" action="{{route('products.active', $product->id)}}" method="post">
                           {{ method_field('PUT') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-sm btn-primary"><span class="fa fa-repeat"></span> Activar</button>
+                          <button type="submit" class="btn button-active"><span class="fa fa-repeat"></span> Activar</button>
                         </form>
                       @endif
                     </li>
@@ -50,7 +53,7 @@
                       <form class="" action="{{ route('products.destroy', $product->id)}}" method="post">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estás seguro de querer eliminar el producto?')"><span class="fa fa-trash-o"></span></button>
+                        <button type="submit" class="btn button-delete" onclick="return confirm('Estás seguro de querer eliminar el producto?')"><span class="fa fa-trash-o"></span></button>
                       </form>
                     </li>
                   </ul>

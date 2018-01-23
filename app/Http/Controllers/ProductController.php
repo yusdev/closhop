@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $user = \Auth::user();
         $products = $user->products()->orderBy('id', 'desc')->get();
-        return view('myproducts', ['user'=>$user,'products' => $products]);
+        return view('back.myproducts', ['user'=>$user,'products' => $products]);
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create() //Mostrar formulario para crear un producto
     {
-      return view('createnewproduct');
+      return view('back.createnewproduct');
     }
 
     /**
@@ -127,7 +127,7 @@ class ProductController extends Controller
         $sizes = $product->sizes;
         $colors = $product->colors;
         $stocks = DB::table('color_product_size')->where('product_id', $product->id)->get();
-        return view('editproduct', ['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors, 'stocks'=>$stocks]);
+        return view('back.editproduct', ['product'=>$product, 'sizes'=>$sizes, 'colors'=>$colors, 'stocks'=>$stocks]);
     }
 
     /**

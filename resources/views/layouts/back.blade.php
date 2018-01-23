@@ -5,15 +5,14 @@
     <meta charset="utf-8">
     <title>Closhop vendor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/clostyles.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/fonts/fontawesome-webfont.svg">
+
+
 
   </head>
 
@@ -53,31 +52,6 @@
                 </li>
               </ul>
             </div>
-
-
-
-
-            <!-- <div class="dropdown" >
-              <a class="user"> {{ Auth::user()->shop_name }} <span class="fa fa-sort-desc"></span> </a>
-
-              <ul class="dropdown-content">
-                  <li> <a href="{{ route('myaccount') }}"> <span class="fa fa-user"> Mi cuenta<span> </a> </li> <br>
-                  <li> <a href="{{ route('products.index') }}"> Productos </a> </li> <br>
-                  <li> <a href="#"> Mis ventas </a> </li> <br>
-                  <li>
-                      <a href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                                   <span class="fa fa-sign-out">
-                          Salir</span>
-                      </a>
-
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                      </form>
-                  </li>
-              </ul>
-            </div> -->
             @endguest
         </header>
       </div>
@@ -92,24 +66,12 @@
 
 
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
-    @yield('scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <!-- SELECT2 -->
+      <script src="/js/select2.min.js"></script>
 
     <script type="text/javascript">
-
-
-        // var dropdown = document.querySelector('.user');
-        // var dropdownContent = document.querySelector('.dropdown-content');
-        // dropdown.addEventListener('click', function(){
-        //   if(dropdownContent.style.display == 'none'){
-        //     dropdownContent.style.display = 'block';
-        //   }else{
-        //     dropdownContent.style.display = 'none';
-        //   }
-        // });
-
         window.onload = function(){
 
           $(document).ready(function(e){
@@ -118,11 +80,9 @@
              });
           });
         }
-
-
-
-
     </script>
+
+    @yield('scripts')
 
   </body>
 </html>
