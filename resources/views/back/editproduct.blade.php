@@ -1,62 +1,103 @@
 @extends('back.afterlogin')
 
 @section('subcontent')
-<div class="container">
+
+
+<div class="clo-form">
   <form method="POST" enctype="multipart/form-data" action="{{route('products.update', $product->id)}}">
   {{ csrf_field() }}
   {{ method_field('PATCH') }}
 
-      <div class="col-md-10 col-md-offset-1 clo-container">
+    <div class="">
+      <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} col-md-12">
+        <label>Nombre del producto</label>
+        <input type="text" class="form-control" name="name" value="{{ old('name', $product->name) }}">
+        @if ($errors->has('name'))
+            <span class="help-block">
+                <strong>{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
+      </div>
+    </div>
 
-          <div class="form-group col-md-12">
-            <label>Nombre del producto</label>
-            <input type="text" class="form-control" name="name" value="{{ old('name', $product->name) }}">
+    <div class="middle">
+      <div class="form-group{{ $errors->has('originalprice') ? ' has-error' : '' }} col-md-6">
+        <label>Precio original</label>
+        <input type="text" class="form-control" name="originalprice" value="{{old('originalprice', $product->originalprice)}}">
+        @if ($errors->has('originalprice'))
+            <span class="help-block">
+                <strong>{{ $errors->first('originalprice') }}</strong>
+            </span>
+        @endif
+      </div>
+    </div>
+
+    <div class="middle">
+      <div class="form-group{{ $errors->has('saleprice') ? ' has-error' : '' }} col-md-6">
+        <label>Precio promocional (Rebaja)</label>
+        <input type="text" class="form-control" name="saleprice" value="{{old('saleprice', $product->saleprice)}}">
+        @if ($errors->has('saleprice'))
+            <span class="help-block">
+                <strong>{{ $errors->first('saleprice') }}</strong>
+            </span>
+        @endif
+      </div>
+    </div>
+
+    <div class="">
+      <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }} col-md-12">
+        <label>Descripción del producto</label>
+        <input type="text" name="description" value="{{old('description', $product->description)}}">
+        @if ($errors->has('description'))
+            <span class="help-block">
+                <strong>{{ $errors->first('description') }}</strong>
+            </span>
+        @endif
+      </div>
+    </div>
+
+
+      <div class="stocks">
+
+        @foreach ($stocks as $stock)
+
+          <div class="onethird">
+            <label>Talle</label>
+            @foreach ($sizes as $size)
+              @if($size->id == $stock->size_id)
+                <p>{{$size->size}}</p>
+                @break
+              @endif
+            @endforeach
           </div>
 
-          <div class="form-group col-md-6">
-            <label>Precio original</label>
-            <input type="text" class="form-control" name="originalprice" value="{{ old('originalprice', $product->originalprice) }}">
+          <div class="onethird">
+            <label>Color</label>
+            @foreach ($colors as $color)
+              @if($color->id == $stock->color_id)
+                <p>{{$color->color}}</p>
+                @break
+              @endif
+            @endforeach
           </div>
 
-          <div class="form-group col-md-6">
-            <label>Precio promocional (Rebaja)</label>
-            <input type="text" class="form-control" name="saleprice" value="{{ old('saleprice', $product->saleprice) }}">
+          <div class="onethird">
+            <label>Stock</label>
+            <p style="text-align:center"><input type="checkbox" name="variants[]" value="{{$stock->id}}" <?php if($stock->stock == 1){ echo "checked"; }?>></p>
           </div>
 
-          <div class="form-group col-md-12">
-            <label for="name">Descripción del producto</label>
-            <textarea style="min-height:15px" type="text" class="form-control" placeholder="Describe tu producto" name="description">{{ old('description', $product->description) }}</textarea>
-          </div>
+        @endforeach
+      </div>
 
-          <div class="form-group col-md-12">
-            <div class="">
-              <div class="col-md-1">
-                <label>Talle</label>
-                <?php foreach ($sizes as $size): ?>
-                  <p>{{$size->size}}</p>
-                <?php endforeach; ?>
-              </div>
-              <div class="col-md-1">
-                <label>Color</label>
-                <?php foreach ($colors as $color): ?>
-                  <p>{{$color->color}}</p>
-                <?php endforeach; ?>
-              </div>
-              <div class="col-md-1">
-                <label>Stock</label>
-                <?php foreach ($stocks as $stock): ?>
-                  <p style="text-align:center"><input type="checkbox" name="variants[]" value="{{$stock->id}}" <?php if($stock->stock == 1){ echo "checked"; }?>></p>
-                <?php endforeach; ?>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
 
-      <button type="submit" name="button" class="col-md-10 col-md-offset-1 btn btn-warning" style="margin-top:20px">GUARDAR CAMBIOS</button>
+
+    <button type="submit" name="button" class="button">GUARDAR CAMBIOS</button>
 
   </form>
-
 </div>
+
+
 
 @include('modals.success')
 
@@ -71,11 +112,12 @@
 
 <script type="text/javascript">
     window.onload = function(){
+      var sizes = '<?php echo $sizes; ?>'
       var modal = document.getElementById('myModal');
       var span = document.getElementsByClassName("close")[0];
       var ok = document.querySelector(".ok-btn");
 
-      var saved = <?php echo $saved; ?>;
+      var saved = '<?php echo $saved; ?>'
 
       if(saved){
         modal.style.display = "block";

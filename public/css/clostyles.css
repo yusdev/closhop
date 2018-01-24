@@ -422,6 +422,7 @@ footer p {
   justify-content: center;
 }
 
+
 @media (min-width: 576px) {
   .header-container {
     width: 90%;
